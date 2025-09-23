@@ -1,0 +1,22 @@
+$ terraform apply
+data.aws_ami.ubuntu: Reading...
+data.aws_ami.ubuntu: Read complete after 1s [id=ami-0026a04369a3093cc]
+aws_instance.app_server: Refreshing state... [id=i-0c636e158c30e48f9]
+
+Changes to Outputs:
+  + instance_hostname = "ip-172-31-35-26.us-west-2.compute.internal"
+
+You can apply this plan to save these new output values to the Terraform state, without changing any real infrastructure.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+instance_hostname = "ip-172-31-35-26.us-west-2.compute.internal"
