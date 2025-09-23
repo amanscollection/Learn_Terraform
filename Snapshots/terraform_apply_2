@@ -1,0 +1,7 @@
+  Enter a value: yes
+
+aws_instance.app_server: Creating...
+aws_instance.app_server: Still creating... [10s elapsed]
+aws_instance.app_server: Creation complete after 14s [id=i-0c636e158c30e48f9]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
