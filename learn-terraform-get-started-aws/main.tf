@@ -13,7 +13,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Caconical
 }
 
-resource "aws_instance" "app_server" {
+/* resource "aws_instance" "app_server" {
   ami = data.aws_ami.ubuntu.id
   # instance_type = "t2.mirco"
   instance_type = var.instance_type
@@ -25,7 +25,7 @@ resource "aws_instance" "app_server" {
     # Name = "learn-terraform"
     Name = var.instance_name
   }
-}
+} */
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
