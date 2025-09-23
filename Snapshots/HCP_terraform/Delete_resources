@@ -1,0 +1,50 @@
+ terraform destroy
+Running apply in HCP Terraform. Output will stream here. Pressing Ctrl-C
+will cancel the remote apply if it's still pending. If the apply started it
+will stop streaming the logs, but will not stop the apply running remotely.
+
+Preparing the remote apply...
+
+To view this run in a browser, visit:
+https://app.terraform.io/app/your-organization-name/learn-terraform-aws-get-started/runs/run-zvFXqwertyUIOPab
+
+Waiting for the plan to start...
+
+Terraform v1.12.0
+on linux_amd64
+Initializing plugins and modules...
+
+## ...
+
+Plan: 0 to add, 0 to change, 16 to destroy.
+
+Changes to Outputs:
+  - instance_hostname = "ip-10-0-1-111.us-west-2.compute.internal" -> null
+
+Do you really want to destroy all resources in workspace "learn-terraform-aws-get-started"?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+module.vpc.aws_default_security_group.this[0]: Destroying... [id=sg-014b478a2b1cd316e]
+module.vpc.aws_route_table_association.public[0]: Destroying... [id=rtbassoc-0f3b7ed7e1f49d2a1]
+module.vpc.aws_route_table_association.private[1]: Destroying... [id=rtbassoc-0647d3c7904113d60]
+module.vpc.aws_default_network_acl.this[0]: Destroying... [id=acl-0fafc47f15e7c59f5]
+module.vpc.aws_route.public_internet_gateway[0]: Destroying... [id=r-rtb-0956189f24b1a92ae1080289494]
+module.vpc.aws_route_table_association.private[0]: Destroying... [id=rtbassoc-01e3f044ca6bb5fe0]
+module.vpc.aws_default_route_table.default[0]: Destroying... [id=rtb-0a78b66d2a9e3e4d7]
+
+## ...
+
+aws_instance.app_server: Still destroying... [id=i-069c5ad5f53ba2ce2, 01m20s elapsed]
+aws_instance.app_server: Still destroying... [id=i-069c5ad5f53ba2ce2, 01m30s elapsed]
+aws_instance.app_server: Destruction complete after 1m33s
+module.vpc.aws_subnet.private[1]: Destroying... [id=subnet-0daa2b4c37d3d9bd1]
+module.vpc.aws_subnet.private[0]: Destroying... [id=subnet-0c30a4ca611a967c3]
+module.vpc.aws_subnet.private[0]: Destruction complete after 0s
+module.vpc.aws_subnet.private[1]: Destruction complete after 1s
+module.vpc.aws_vpc.this[0]: Destroying... [id=vpc-0a3754c28c3d86167]
+module.vpc.aws_vpc.this[0]: Destruction complete after 0s
+
+Destroy complete! Resources: 16 destroyed.
