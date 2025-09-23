@@ -1,0 +1,70 @@
+$ terraform apply
+data.aws_ami.ubuntu: Reading...
+data.aws_ami.ubuntu: Read complete after 1s [id=ami-0026a04369a3093cc]
+aws_instance.app_server: Refreshing state... [id=i-0c636e158c30e48f9]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+
+- create
+  -/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+# aws_instance.app_server must be replaced
+
+-/+ resource "aws_instance" "app_server" {
+~ arn = "arn:aws:ec2:us-west-2:949008909725:instance/i-0c636e158c30e48f9" -> (known after apply)
+~ associate_public_ip_address = true -> (known after apply)
+~ availability_zone = "us-west-2b" -> (known after apply)
+
+##...
+
+        }
+    }
+
+Plan: 16 to add, 0 to change, 1 to destroy.
+
+Changes to Outputs:
+~ instance_hostname = "ip-172-31-35-26.us-west-2.compute.internal" -> (known after apply)
+
+Do you want to perform these actions?
+Terraform will perform the actions described above.
+Only 'yes' will be accepted to approve.
+
+Enter a value: yes
+
+aws_instance.app_server: Destroying... [id=i-0fbb487cbdf2eb6ed]
+aws_instance.app_server: Still destroying... [id=i-0fbb487cbdf2eb6ed, 00m10s elapsed]
+aws_instance.app_server: Still destroying... [id=i-0fbb487cbdf2eb6ed, 00m20s elapsed]
+aws_instance.app_server: Still destroying... [id=i-0fbb487cbdf2eb6ed, 00m30s elapsed]
+aws_instance.app_server: Destruction complete after 31s
+module.vpc.aws_vpc.this[0]: Creating...
+module.vpc.aws_vpc.this[0]: Still creating... [00m10s elapsed]
+module.vpc.aws_vpc.this[0]: Creation complete after 12s [id=vpc-01e157ec1af2d7314]
+module.vpc.aws_subnet.private[0]: Creating...
+module.vpc.aws_route_table.private[1]: Creating...
+module.vpc.aws_subnet.private[1]: Creating...
+module.vpc.aws_route_table.private[0]: Creating...
+module.vpc.aws_default_route_table.default[0]: Creating...
+module.vpc.aws_subnet.public[0]: Creating...
+module.vpc.aws_internet_gateway.this[0]: Creating...
+module.vpc.aws_default_security_group.this[0]: Creating...
+
+## ...
+
+module.vpc.aws_route_table_association.private[1]: Creation complete after 0s [id=rtbassoc-0ea0b41646a73659c]
+module.vpc.aws_route_table_association.private[0]: Creation complete after 0s [id=rtbassoc-0d51502051aa2c2af]
+module.vpc.aws_default_network_acl.this[0]: Creation complete after 2s [id=acl-03b6b08c6f6a81e4a]
+module.vpc.aws_route.public_internet_gateway[0]: Creation complete after 1s [id=r-rtb-0cde73c077eadf7e61080289494]
+module.vpc.aws_default_security_group.this[0]: Creation complete after 3s [id=sg-04f350f66843618db]
+module.vpc.aws_subnet.public[0]: Creation complete after 3s [id=subnet-02a7d5d6b6e8742d6]
+module.vpc.aws_route_table_association.public[0]: Creating...
+module.vpc.aws_route_table_association.public[0]: Creation complete after 1s [id=rtbassoc-03db7fad8ba24eca0]
+aws_instance.app_server: Still creating... [00m10s elapsed]
+aws_instance.app_server: Creation complete after 13s [id=i-0226232d8b6e9eea6]
+
+Apply complete! Resources: 16 added, 0 changed, 1 destroyed.
+
+Outputs:
+
+instance_hostname = "ip-10-0-1-75.us-west-2.compute.internal"
