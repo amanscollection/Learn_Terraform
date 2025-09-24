@@ -1,0 +1,11 @@
+terraform.tfstate
+
+
+terraform show
+$ terraform show
+# azurerm_resource_group.rg:
+resource "azurerm_resource_group" "rg" {
+    id       = "/subscriptions/c9ed8610-47a3-4107-a2b2-a322114dfb29/resourceGroups/myTFResourceGroup"
+    location = "westus2"
+    name     = "myTFResourceGroup"
+}

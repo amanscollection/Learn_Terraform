@@ -2,7 +2,7 @@
 
 A sample of learning Terraform projects
 
-# Get_Stated_AWS
+# Get_Started_AWS
 
 Creating terraform.tf and main.tf
 
@@ -62,3 +62,7 @@ Name = var.instance_name
     type        = string
     default     = "learn-terraform"
     }
+
+# Create HCP terraform using remote.
+
+terraform login
