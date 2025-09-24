@@ -66,3 +66,92 @@ Name = var.instance_name
 # Create HCP terraform using remote.
 
 terraform login
+
+# Get_Started_AZure
+
+Creating main.tf
+
+# configure the Azure provider
+
+terraform {
+required_providers {
+azurerm = {
+source = "hashicorp/azurerm"
+version = "~> 3.0.2"
+}
+}
+required_version = ">= 1.1.0"
+}
+
+provider "azurerm" {
+features {
+
+}
+}
+
+resource "azurerm_resource_group" "rg" {
+
+# name = "myTFResourceGroup"
+
+name = var.resource_group_name
+location = "westus2"
+}
+
+# Create a virtual network
+
+resource "azurerm_virtual_network" "vnet" {
+name = "myTFVnet"
+address_space = ["10.0.0.0/16"]
+location = "westus2"
+resource_group_name = azurerm_resource_group.rg.name
+
+tags = {
+Environment = "Terraform Getting Started"
+Team = "DevOps"
+}
+}
+
+# Creating Variable and Outputs.tf
+
+output "resource_group_id" {
+value = azurerm_resource_group.rg.id
+}
+
+variable "resource_group_name" {
+default = "myTFResourceGroup"
+
+}
+
+Some Snapshot are there, please do Hands-Ons practice.
+
+# HCP Terraform with Azure
+
+Creating main.tf and snapshot images
+terraform {
+required_version = ">= 1.1.0"
+required_providers {
+azurerm = {
+source = "hashicorp/azurerm"
+version = "~> 3.0.2"
+}
+}
+
+cloud {
+organization = "Org_name"
+workspaces {
+name = "learn-terraform-azure"
+}
+}
+}
+
+provider "azurerm" {
+features {
+
+}
+
+}
+
+resource "azurerm_resource_group" "rg" {
+name = "myTFResourceGroup"
+location = "westus2"
+}
