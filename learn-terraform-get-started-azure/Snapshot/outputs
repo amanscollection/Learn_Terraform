@@ -1,0 +1,2 @@
+$ terraform output resource_group_id
+"/subscriptions/c9ed8610-47a3-4107-a2b2-a322114dfb29/resourceGroups/myTFResourceGroup"

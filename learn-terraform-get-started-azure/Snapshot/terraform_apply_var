@@ -1,0 +1,56 @@
+$ terraform apply -var "resource_group_name=myNewResourceGroupName"
+azurerm_resource_group.rg: Refreshing state... [id=/subscriptions/c9ed8610-47a3-4107-a2b2-a322114dfb29/resourceGroups/myTFResourceGroup]
+azurerm_virtual_network.vnet: Refreshing state... [id=/subscriptions/c9ed8610-47a3-4107-a2b2-a322114dfb29/resourceGroups/myTFResourceGroup/providers/Microsoft.Network/virtualNetworks/myTFVnet]
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # azurerm_resource_group.rg must be replaced
+-/+ resource "azurerm_resource_group" "rg" {
+      ~ id       = "/subscriptions/c9ed8610-47a3-4107-a2b2-a322114dfb29/resourceGroups/myTFResourceGroup" -> (known after apply)
+      ~ name     = "myTFResourceGroup" -> "myNewResourceGroupName" # forces replacement
+        tags     = {
+            "Environment" = "Terraform Getting Started"
+            "Team"        = "DevOps"
+        }
+        # (1 unchanged attribute hidden)
+    }
+
+  # azurerm_virtual_network.vnet must be replaced
+-/+ resource "azurerm_virtual_network" "vnet" {
+      - dns_servers           = [] -> null
+      ~ guid                  = "260a1a64-08ed-4693-84d8-eda800326faa" -> (known after apply)
+      ~ id                    = "/subscriptions/c9ed8610-47a3-4107-a2b2-a322114dfb29/resourceGroups/myTFResourceGroup/providers/Microsoft.Network/virtualNetworks/myTFVnet" -> (known after apply)
+        name                  = "myTFVnet"
+      ~ resource_group_name   = "myTFResourceGroup" -> "myNewResourceGroupName" # forces replacement
+      ~ subnet                = [] -> (known after apply)
+      - tags                  = {} -> null
+        # (3 unchanged attributes hidden)
+    }
+
+Plan: 2 to add, 0 to change, 2 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+azurerm_virtual_network.vnet: Destroying... [id=/subscriptions/c9ed8610-47a3-4107-a2b2-a322114dfb29/resourceGroups/myTFResourceGroup/providers/Microsoft.Network/virtualNetworks/myTFVnet]
+azurerm_virtual_network.vnet: Still destroying... [id=/subscriptions/c9ed8610-47a3-4107-a2b2-...osoft.Network/virtualNetworks/myTFVnet, 10s elapsed]
+azurerm_virtual_network.vnet: Destruction complete after 11s
+azurerm_resource_group.rg: Destroying... [id=/subscriptions/c9ed8610-47a3-4107-a2b2-a322114dfb29/resourceGroups/myTFResourceGroup]
+azurerm_resource_group.rg: Still destroying... [id=/subscriptions/c9ed8610-47a3-4107-a2b2-...dfb29/resourceGroups/myTFResourceGroup, 10s elapsed]
+azurerm_resource_group.rg: Still destroying... [id=/subscriptions/c9ed8610-47a3-4107-a2b2-...dfb29/resourceGroups/myTFResourceGroup, 20s elapsed]
+azurerm_resource_group.rg: Still destroying... [id=/subscriptions/c9ed8610-47a3-4107-a2b2-...dfb29/resourceGroups/myTFResourceGroup, 30s elapsed]
+azurerm_resource_group.rg: Still destroying... [id=/subscriptions/c9ed8610-47a3-4107-a2b2-...dfb29/resourceGroups/myTFResourceGroup, 40s elapsed]
+azurerm_resource_group.rg: Destruction complete after 48s
+azurerm_resource_group.rg: Creating...
+azurerm_resource_group.rg: Creation complete after 1s [id=/subscriptions/c9ed8610-47a3-4107-a2b2-a322114dfb29/resourceGroups/myNewResourceGroupName]
+azurerm_virtual_network.vnet: Creating...
+azurerm_virtual_network.vnet: Creation complete after 6s [id=/subscriptions/c9ed8610-47a3-4107-a2b2-a322114dfb29/resourceGroups/myNewResourceGroupName/providers/Microsoft.Network/virtualNetworks/myTFVnet]
+
+Apply complete! Resources: 2 added, 0 changed, 2 destroyed.

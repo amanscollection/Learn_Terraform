@@ -1,0 +1,5 @@
+ARM_SUBSCRIPTION_ID  - SUBSCRIPTION_ID from the last command's input
+ARM_CLIENT_ID        - appID from the last command's output.
+ARM_CLIENT_SECRET    - password from the last command's output. (Sensitive)
+ARM_TENANT_ID        - tenant from the last command's output.
+
