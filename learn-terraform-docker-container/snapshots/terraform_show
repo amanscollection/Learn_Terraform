@@ -1,0 +1,68 @@
+$ terraform show
+# docker_container.nginx:
+resource "docker_container" "nginx" {
+    attach            = false
+    command           = [
+        "nginx",
+        "-g",
+        "daemon off;",
+    ]
+    cpu_shares        = 0
+    entrypoint        = [
+        "/docker-entrypoint.sh",
+    ]
+    env               = []
+    gateway           = "172.17.0.1"
+    hostname          = "2834ad628337"
+    id                = "2834ad6283372ceb61121739ce71d31cb0237ad50f4dc234e3445c9445439181"
+    image             = "sha256:d1a364dc548d5357f0da3268c888e1971bbdb957ee3f028fe7194f1d61c6fdee"
+    init              = false
+    ip_address        = "172.17.0.2"
+    ip_prefix_length  = 16
+    ipc_mode          = "private"
+    log_driver        = "json-file"
+    logs              = false
+    max_retry_count   = 0
+    memory            = 0
+    memory_swap       = 0
+    must_run          = true
+    name              = "tutorial"
+    network_data      = [
+        {
+            gateway                   = "172.17.0.1"
+            global_ipv6_address       = ""
+            global_ipv6_prefix_length = 0
+            ip_address                = "172.17.0.2"
+            ip_prefix_length          = 16
+            ipv6_gateway              = ""
+            network_name              = "bridge"
+        },
+    ]
+    network_mode      = "default"
+    privileged        = false
+    publish_all_ports = false
+    read_only         = false
+    remove_volumes    = true
+    restart           = "no"
+    rm                = false
+    security_opts     = []
+    shm_size          = 64
+    start             = true
+    stdin_open        = false
+    tty               = false
+
+    ports {
+        external = 8000
+        internal = 80
+        ip       = "0.0.0.0"
+        protocol = "tcp"
+    }
+}
+
+# docker_image.nginx:
+resource "docker_image" "nginx" {
+    id           = "sha256:d1a364dc548d5357f0da3268c888e1971bbdb957ee3f028fe7194f1d61c6fdeenginx:latest"
+    keep_locally = false
+    latest       = "sha256:d1a364dc548d5357f0da3268c888e1971bbdb957ee3f028fe7194f1d61c6fdee"
+    name         = "nginx:latest"
+}
