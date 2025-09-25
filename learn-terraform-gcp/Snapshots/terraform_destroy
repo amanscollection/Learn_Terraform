@@ -1,0 +1,53 @@
+$ terraform destroy
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # google_compute_instance.vm_instance will be destroyed
+  - resource "google_compute_instance" "vm_instance" {
+      - can_ip_forward       = false -> null
+      - cpu_platform         = "Intel Haswell" -> null
+      - deletion_protection  = false -> null
+      - enable_display       = false -> null
+      - guest_accelerator    = [] -> null
+      - id                   = "projects/testing-project/zones/us-central1-c/instances/terraform-instance" -> null
+      - instance_id          = "1820538232654796756" -> null
+      - label_fingerprint    = "42WmSpB8rSM=" -> null
+      - machine_type         = "f1-micro" -> null
+
+      ## ...
+
+    }
+
+  # google_compute_network.vpc_network will be destroyed
+  - resource "google_compute_network" "vpc_network" {
+      - auto_create_subnetworks         = true -> null
+      - delete_default_routes_on_create = false -> null
+      - id                              = "projects/testing-project/global/networks/terraform-network" -> null
+      - name                            = "terraform-network" -> null
+      - project                         = "testing-project" -> null
+      - routing_mode                    = "REGIONAL" -> null
+      - self_link                       = "https://www.googleapis.com/compute/v1/projects/testing-project/global/networks/terraform-network" -> null
+    }
+
+Plan: 0 to add, 0 to change, 2 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+   Enter a value: yes
+
+google_compute_instance.vm_instance: Destroying... [id=projects/testing-project/zones/us-central1-c/instances/terraform-instance]
+google_compute_instance.vm_instance: Still destroying... [id=projects/testing-project/zones/...entral1-c/instances/terraform-instance, 10s elapsed]
+google_compute_instance.vm_instance: Destruction complete after 16s
+google_compute_network.vpc_network: Destroying... [id=projects/testing-project/global/networks/terraform-network]
+google_compute_network.vpc_network: Still destroying... [id=projects/testing-project/global/networks/terraform-network, 10s elapsed]
+google_compute_network.vpc_network: Still destroying... [id=projects/testing-project/global/networks/terraform-network, 20s elapsed]
+google_compute_network.vpc_network: Still destroying... [id=projects/testing-project/global/networks/terraform-network, 30s elapsed]
+google_compute_network.vpc_network: Destruction complete after 37s
+
+Destroy complete! Resources: 2 destroyed.

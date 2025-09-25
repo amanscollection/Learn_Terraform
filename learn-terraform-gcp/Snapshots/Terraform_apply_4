@@ -1,0 +1,90 @@
+$ terraform apply
+google_compute_network.vpc_network: Refreshing state... [id=projects/testing-project/global/networks/terraform-network]
+google_compute_instance.vm_instance: Refreshing state... [id=projects/testing-project/zones/us-central1-c/instances/terraform-instance]
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # google_compute_instance.vm_instance must be replaced
+-/+ resource "google_compute_instance" "vm_instance" {
+      ~ cpu_platform         = "Intel Haswell" -> (known after apply)
+      - enable_display       = false -> null
+      ~ guest_accelerator    = [] -> (known after apply)
+      ~ id                   = "projects/testing-project/zones/us-central1-c/instances/terraform-instance" -> (known after apply)
+      ~ instance_id          = "3944132344841508591" -> (known after apply)
+      ~ label_fingerprint    = "42WmSpB8rSM=" -> (known after apply)
+      - labels               = {} -> null
+      - metadata             = {} -> null
+      ~ metadata_fingerprint = "uvlMXYfy7lg=" -> (known after apply)
+      + min_cpu_platform     = (known after apply)
+        name                 = "terraform-instance"
+      ~ project              = "testing-project" -> (known after apply)
+      ~ self_link            = "https://www.googleapis.com/compute/v1/projects/testing-project/zones/us-central1-c/instances/terraform-instance" -> (known after apply)
+        tags                 = [
+            "dev",
+            "web",
+        ]
+      ~ tags_fingerprint     = "XaeQnaHMn9Y=" -> (known after apply)
+      ~ zone                 = "us-central1-c" -> (known after apply)
+        # (3 unchanged attributes hidden)
+
+      ~ boot_disk {
+          ~ device_name                = "persistent-disk-0" -> (known after apply)
+          + disk_encryption_key_sha256 = (known after apply)
+          + kms_key_self_link          = (known after apply)
+          ~ source                     = "https://www.googleapis.com/compute/v1/projects/testing-project/zones/us-central1-c/disks/terraform-instance" -> (known after apply)
+            # (2 unchanged attributes hidden)
+
+          ~ initialize_params {
+              ~ image  = "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-11-bullseye-v20220822" -> "cos-cloud/cos-stable" # forces replacement
+              ~ labels = {} -> (known after apply)
+              ~ size   = 10 -> (known after apply)
+              ~ type   = "pd-standard" -> (known after apply)
+            }
+        }
+
+      ~ network_interface {
+          ~ name               = "nic0" -> (known after apply)
+          ~ network            = "https://www.googleapis.com/compute/v1/projects/testing-project/global/networks/terraform-network" -> "terraform-network"
+          ~ network_ip         = "10.128.0.2" -> (known after apply)
+          ~ subnetwork         = "https://www.googleapis.com/compute/v1/projects/testing-project/regions/us-central1/subnetworks/terraform-network" -> (known after apply)
+          ~ subnetwork_project = "testing-project" -> (known after apply)
+
+          ~ access_config {
+              ~ nat_ip       = "34.123.44.123" -> (known after apply)
+              ~ network_tier = "PREMIUM" -> (known after apply)
+            }
+        }
+
+      ~ scheduling {
+          ~ automatic_restart   = true -> (known after apply)
+          ~ on_host_maintenance = "MIGRATE" -> (known after apply)
+          ~ preemptible         = false -> (known after apply)
+
+          + node_affinities {
+              + key      = (known after apply)
+              + operator = (known after apply)
+              + values   = (known after apply)
+            }
+        }
+    }
+
+Plan: 1 to add, 0 to change, 1 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+google_compute_instance.vm_instance: Destroying... [id=projects/testing-project/zones/us-central1-c/instances/terraform-instance]
+google_compute_instance.vm_instance: Still destroying... [id=projects/testing-project/zones/...entral1-c/instances/terraform-instance, 10s elapsed]
+google_compute_instance.vm_instance: Destruction complete after 16s
+google_compute_instance.vm_instance: Creating...
+google_compute_instance.vm_instance: Still creating... [10s elapsed]
+google_compute_instance.vm_instance: Creation complete after 18s [id=projects/testing-project/zones/us-central1-c/instances/terraform-instance]
+
+Apply complete! Resources: 1 added, 0 changed, 1 destroyed.

@@ -1,0 +1,6 @@
+$ gcloud auth application-default login
+
+
+Credentials saved to file: [/Users/USER/.config/gcloud/application_default_credentials.json]
+
+These credentials will be used by any library that requests Application Default Credentials (ADC).
