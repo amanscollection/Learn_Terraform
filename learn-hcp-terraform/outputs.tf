@@ -1,0 +1,20 @@
+output "instance_hostname" {
+  description = "Private DNS name of the EC2 instance."
+  value       = aws_instance.app_server.private_dns
+}
+
+output "instance_security_group_ids" {
+  value = aws_instance.app_server.vpc_security_group_ids
+}
+
+output "instance_subnet" {
+  value = aws_instance.app_server.subnet_id
+}
+
+ output "instance_ami" {
+   description = "AMI used to create the EC2 instance."
+   value       = aws_instance.app_server.ami
+ }
+
+Click Commit changes. When prompted, choose Create a new branch for this commit and start a pull request. 
+Name the branch add-ami-output, 
