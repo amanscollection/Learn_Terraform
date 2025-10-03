@@ -1,0 +1,16 @@
+data "tfe_outputs" "source_workspace" {
+  workspace    = var.workspace_name
+  organization = var.organization_name
+}
+
+resource "aws_instance" "app_server" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = var.instance_type
+
+  vpc_security_group_ids = data.tfe_outputs.source_workspace.nonsensitive_values.instance_security_group_ids
+  subnet_id              = data.tfe_outputs.source_workspace.nonsensitive_values.instance_subnet
+
+  tags = {
+    Name = var.instance_name
+  }
+}
